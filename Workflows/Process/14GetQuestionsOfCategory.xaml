@@ -1,0 +1,447 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_01OpenMoodleCourseSettings" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_questionsDictionary" Type="InOutArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" />
+    <x:Property Name="in_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1040,2716</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="25">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Globalization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Interop</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="14 Get Questions Of Category" sap:VirtualizedContainerService.HintSize="1050,2551" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="1008,2459" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="974,2313" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="questionRows" />
+              <Variable x:TypeArguments="x:Int32" Name="counter" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Show All Questions in Category-Sequence" sap:VirtualizedContainerService.HintSize="932,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="showAllQuestionsLinkExists" />
+                <Variable x:TypeArguments="x:String" Name="pagingLinkText" />
+                <Variable x:TypeArguments="x:Boolean" Name="pagingLinkContainsAll" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:UiElementExists DisplayName="Element Exists 'Show all questions'" Exists="[showAllQuestionsLinkExists]" sap:VirtualizedContainerService.HintSize="694,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f6fa332-69d8-4c70-bf1e-dc13010d5c15" InformativeScreenshot="a126e8134d8e125d2ce20703e42d7540" Selector="&lt;webctrl parentid='region-main' tag='A' parentclass='paging' /&gt;" WaitForReady="NONE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <If Condition="[showAllQuestionsLinkExists]" DisplayName="If Element 'Show all questions' exist" sap:VirtualizedContainerService.HintSize="694,765" sap2010:WorkflowViewState.IdRef="If_7">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="535,618" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute 'aaname' from element" sap:VirtualizedContainerService.HintSize="493,134" sap2010:WorkflowViewState.IdRef="GetAttribute_11">
+                      <ui:GetAttribute.Result>
+                        <OutArgument x:TypeArguments="x:String">[pagingLinkText]</OutArgument>
+                      </ui:GetAttribute.Result>
+                      <ui:GetAttribute.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea92c193-2867-45b5-8c6b-76a635e780a7" InformativeScreenshot="afe911c036785648fc80447fdfa97952" Selector="&lt;webctrl parentid='region-main' tag='A' parentclass='paging' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:GetAttribute.Target>
+                    </ui:GetAttribute>
+                    <ui:IsMatch BuilderPattern="all" DisplayName="Does link text contain &quot;all&quot;?" sap:VirtualizedContainerService.HintSize="493,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[pagingLinkText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Buchstäblich&quot;,&quot;OperationValue&quot;:&quot;all&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="all" RegexOption="IgnoreCase" Result="[pagingLinkContainsAll]" />
+                    <If Condition="[pagingLinkContainsAll]" DisplayName="If Show All Questions Link exists" sap:VirtualizedContainerService.HintSize="493,253" sap2010:WorkflowViewState.IdRef="If_6">
+                      <If.Then>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Show all questions-Link" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="90743f7e-a1ad-4f2c-ac36-04160aabe4f2" InformativeScreenshot="09f4657a10eb9188a12403920e52ab6c" Selector="&lt;webctrl parentid='region-main' tag='A' parentclass='paging' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <ui:FindChildren Children="[questionRows]" DisplayName="Find rows with Question Metadata (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="932,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+              <ui:FindChildren.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1fa59a1d-7299-4472-988c-1f4cac6ffa26" Selector="&lt;webctrl tag='TBODY' parentid='categoryquestions' idx='1' /&gt;" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:FindChildren.Target>
+            </ui:FindChildren>
+            <Assign sap2010:Annotation.AnnotationText="For differentiating between odd and even table rows" DisplayName="Assign counter" sap:VirtualizedContainerService.HintSize="932,102" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">1</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Question Row In Table" sap:VirtualizedContainerService.HintSize="932,1865" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[questionRows]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="ui:UiElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:UiElement" Name="questionRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="896,1732" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[counter Mod 2 = 1]" DisplayName="Only process odd rows (If)" sap:VirtualizedContainerService.HintSize="854,1540" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence DisplayName="Process Question Row-Sequence" sap:VirtualizedContainerService.HintSize="695,1393" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="questionName" />
+                            <Variable x:TypeArguments="x:String" Name="questionEditUrl" />
+                            <Variable x:TypeArguments="x:String" Name="questionPreviewUrl" />
+                            <Variable x:TypeArguments="x:String" Name="questionType" />
+                            <Variable x:TypeArguments="x:String" Name="questionId" />
+                            <Variable x:TypeArguments="x:String" Name="questionModifiedDate" />
+                            <Variable x:TypeArguments="x:String" Name="questionModifiedFrom" />
+                            <Variable x:TypeArguments="x:String" Name="questionCreatedFrom" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Get Question Metadata-Sequence" sap:VirtualizedContainerService.HintSize="653,1301" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Boolean" Name="processQuestion" />
+                              <Variable x:TypeArguments="x:String" Name="nameOfQuestionsLink" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Question Modified Date (Get Attribute)" sap:VirtualizedContainerService.HintSize="611,96" sap2010:WorkflowViewState.IdRef="GetAttribute_9">
+                              <ui:GetAttribute.Result>
+                                <OutArgument x:TypeArguments="x:String">[questionModifiedDate]</OutArgument>
+                              </ui:GetAttribute.Result>
+                              <ui:GetAttribute.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='SPAN' parentclass='modifiername' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:GetAttribute.Target>
+                            </ui:GetAttribute>
+                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute aaname from Questions Tab" sap:VirtualizedContainerService.HintSize="611,134" sap2010:WorkflowViewState.IdRef="GetAttribute_10">
+                              <ui:GetAttribute.Result>
+                                <OutArgument x:TypeArguments="x:String">[nameOfQuestionsLink]</OutArgument>
+                              </ui:GetAttribute.Result>
+                              <ui:GetAttribute.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1759a752-c456-445a-9120-8e8ac92aa00b" InformativeScreenshot="5145161ebd463a6f823f0fb01e02ffcf" Selector="&lt;webctrl parentid='region-main' tag='A' class='nav-link active' /&gt;" WaitForReady="NONE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:GetAttribute.Target>
+                            </ui:GetAttribute>
+                            <If Condition="[nameOfQuestionsLink.Equals(&quot;Questions&quot;)]" DisplayName="If Moodle Course is In English" sap:VirtualizedContainerService.HintSize="611,207" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If.Then>
+                                <Assign DisplayName="Format Modified Date en-US" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[questionModifiedDate]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(questionModifiedDate, "d MMMM yyyy, h:mm tt", System.Globalization.CultureInfo.GetCultureInfoByIetfLanguageTag("en-US")).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Assign DisplayName="Format Modified Date de-CH" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[questionModifiedDate]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(questionModifiedDate, "d. MMMM yyyy, HH:mm", System.Globalization.CultureInfo.GetCultureInfoByIetfLanguageTag("de-CH")).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Else>
+                            </If>
+                            <If Condition="[Not in_Config(&quot;OnlyProcessModifiedSince&quot;).ToString.Equals(&quot;&quot;)]" DisplayName="If OnlyProcessModifiedSince-Setting is set" sap:VirtualizedContainerService.HintSize="611,399" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="s:DateTime" Name="dateFromConfig" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Assign dateFromConfig" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="s:DateTime">[dateFromConfig]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse(in_Config("OnlyProcessModifiedSince").ToString)]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <Assign DisplayName="Compare Dates to decide if question shall be processed" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Boolean">[processQuestion]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Boolean">[DateTime.Parse(questionModifiedDate) &gt;= dateFromConfig]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Assign DisplayName="Set Process Question to true" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Boolean">[processQuestion]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Else>
+                            </If>
+                            <If Condition="[processQuestion]" DisplayName="If Question shall be processed" sap:VirtualizedContainerService.HintSize="611,213" sap2010:WorkflowViewState.IdRef="If_4">
+                              <If.Then>
+                                <Sequence DisplayName="Process Question Sequence" sap:VirtualizedContainerService.HintSize="440,1382" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="name" DisplayName="Get Question Id (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_5">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionId]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='INPUT' parentclass='checkbox' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Question Type (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionType]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='IMG' parentclass='qtype' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Question Name (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionName]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='LABEL' parentclass='questionname' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Question Edit Link (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_3">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionEditUrl]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='A' parentclass='*editaction' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Question Preview Link (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionPreviewUrl]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='A' parentclass='*previewaction' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="text" DisplayName="Get Question Created From (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_7">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionCreatedFrom]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='TD' class='creatorname' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <Assign DisplayName="Isolate Created From Name (Assign)" sap:VirtualizedContainerService.HintSize="398,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[questionCreatedFrom]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[questionCreatedFrom.Split("("c)(0).Trim]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="text" DisplayName="Get Question Modified From (Get Attribute)" sap:VirtualizedContainerService.HintSize="398,96" sap2010:WorkflowViewState.IdRef="GetAttribute_8">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[questionModifiedFrom]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='TD' class='modifiername' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <Assign DisplayName="Isolate Modified From Name (Assign)" sap:VirtualizedContainerService.HintSize="398,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[questionModifiedFrom]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[questionModifiedFrom.Split("("c)(0).Trim]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[io_questionsDictionary]" DisplayName="Add Question To Question Dictionary" sap:VirtualizedContainerService.HintSize="398,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="[questionId.TrimStart(&quot;q&quot;c)]" Value="[New Dictionary(Of String, String) From { {&quot;type&quot;, questionType}, {&quot;name&quot;, questionName}, {&quot;edit_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionEditUrl + &quot;&quot;&quot;)&quot;}, {&quot;preview_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionPreviewUrl + &quot;&quot;&quot;)&quot;}, {&quot;created_from&quot;, questionCreatedFrom}, {&quot;modified_from&quot;, questionModifiedFrom}, {&quot;modified_date&quot;, questionModifiedDate} }]" />
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                    <Assign sap:VirtualizedContainerService.HintSize="854,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[counter + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
