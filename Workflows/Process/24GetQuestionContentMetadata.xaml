@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_01OpenMoodleCourseSettings" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_01OpenMoodleCourseSettings" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_question" Type="InOutArgument(scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String)))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>466,989</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1114,1133</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
@@ -37,7 +37,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -63,19 +63,19 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="24 Get Question Content Metadata" sap:VirtualizedContainerService.HintSize="476,464" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="24 Get Question Content Metadata" sap:VirtualizedContainerService.HintSize="476,968" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="434,372" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="434,876" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="376,730" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="questionInnerHtml" />
             </Sequence.Variables>
@@ -99,6 +99,195 @@
                 </ui:Target>
               </ui:GetAttribute.Target>
             </ui:GetAttribute>
+            <Sequence sap2010:Annotation.AnnotationText="Get the count of &lt;a href...&gt; Elements in the question as well as their used target-Setting" DisplayName="Get Hyperlinks (Href) Metadata-Sequence" sap:VirtualizedContainerService.HintSize="805,1451" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="img_cnt" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesImgWdthCollection" />
+                <Variable x:TypeArguments="scg:List(x:Int32)" Name="widthCollection" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionImg" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionHref" />
+                <Variable x:TypeArguments="x:Int32" Name="href_cnt" />
+                <Variable x:TypeArguments="scg:List(x:String)" Name="targetList">
+                  <Variable.Default>
+                    <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)" />
+                  </Variable.Default>
+                </Variable>
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches &lt;a href=" sap:VirtualizedContainerService.HintSize="763,59" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[questionInnerHtml]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[&quot;&lt;a href\=\&quot;&quot;.*?&gt;&quot;]" RegexOption="IgnoreCase" Result="[matchesCollectionHref]" />
+              <Assign DisplayName="Assign href_cnt" sap:VirtualizedContainerService.HintSize="763,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[href_cnt]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[matchesCollectionHref.Count]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Href-Tag-Count to dictionary" sap:VirtualizedContainerService.HintSize="763,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="href_cnt" Value="[href_cnt.ToString]" />
+              <If Condition="[href_cnt &gt; 0]" DisplayName="If Href-Tag-Count &gt; 0" sap:VirtualizedContainerService.HintSize="763,951" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence DisplayName="Get Distinct-Target-Values-Sequence" sap:VirtualizedContainerService.HintSize="604,803" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each Href-Tag-Match" sap:VirtualizedContainerService.HintSize="562,533" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[matchesCollectionHref]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="str:Match">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="str:Match" Name="matchHref" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="For Each Href-Tag-Match-Sequence" sap:VirtualizedContainerService.HintSize="526,399" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesImgHghtCollection" />
+                              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesTargetCollection" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches target" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[matchHref.Value]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[&quot;target=\&quot;&quot;(.*?)\&quot;&quot;&quot;]" RegexOption="IgnoreCase" Result="[matchesTargetCollection]" />
+                            <If Condition="[matchesTargetCollection.Count &gt; 0]" DisplayName="If at least one target-Element found" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If.Then>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[targetList]" DisplayName="Add Target to Target-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[matchesTargetCollection.First.Groups(1).Value]" />
+                              </If.Then>
+                              <If.Else>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[targetList]" DisplayName="Add - to Target-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="-" />
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Target(s) to dictionary" sap:VirtualizedContainerService.HintSize="562,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="href_trgt" Value="[String.Join(&quot;,&quot;, targetList)]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Get the count of &lt;img ...&gt; Elements in the question as well as their distinct width and height" DisplayName="Get Image Metadata-Sequence" sap:VirtualizedContainerService.HintSize="334,138" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="img_cnt" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesImgWdthCollection" />
+                <Variable x:TypeArguments="scg:List(x:Int32)" Name="widthCollection" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionImg" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches &lt;img.*&gt;" sap:VirtualizedContainerService.HintSize="763,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[questionInnerHtml]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="&lt;img.*?&gt;" RegexOption="IgnoreCase" Result="[matchesCollectionImg]" />
+              <Assign DisplayName="Assign img_cnt" sap:VirtualizedContainerService.HintSize="763,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[img_cnt]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[matchesCollectionImg.Count]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Img-Tag-Count to dictionary" sap:VirtualizedContainerService.HintSize="763,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="img_cnt" Value="[img_cnt.ToString]" />
+              <If Condition="[img_cnt &gt; 0]" DisplayName="If Img-Tag-Count &gt; 0" sap:VirtualizedContainerService.HintSize="763,1476" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Sequence DisplayName="Get Distinct Width and Height of Images-Sequence" sap:VirtualizedContainerService.HintSize="604,1328" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="scg:List(x:String)" Name="widthList">
+                        <Variable.Default>
+                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)" />
+                        </Variable.Default>
+                      </Variable>
+                      <Variable x:TypeArguments="scg:List(x:String)" Name="heightList">
+                        <Variable.Default>
+                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)" />
+                        </Variable.Default>
+                      </Variable>
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each Img-Tag-Match" sap:VirtualizedContainerService.HintSize="562,880" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[matchesCollectionImg]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="str:Match">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="str:Match" Name="matchImg" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="For Each Img-Tag-Match-Sequence" sap:VirtualizedContainerService.HintSize="526,746" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesImgHghtCollection" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches width" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[matchImg.Value]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[&quot;width\=\&quot;&quot;(.*?)\&quot;&quot;&quot;]" RegexOption="IgnoreCase" Result="[matchesImgWdthCollection]" />
+                            <If Condition="[matchesImgWdthCollection.Count &gt; 0]" DisplayName="If at least one width attribute found" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_4">
+                              <If.Then>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[widthList]" DisplayName="Add Width-Attribute to Width-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[matchesImgWdthCollection.First.Groups(1).Value]" />
+                              </If.Then>
+                              <If.Else>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[widthList]" DisplayName="Add Width-Attribute to Width-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_5" Item="-" />
+                              </If.Else>
+                            </If>
+                            <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches height" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[matchImg.Value]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[&quot;height\=\&quot;&quot;(.*?)\&quot;&quot;&quot;]" RegexOption="IgnoreCase" Result="[matchesImgHghtCollection]" />
+                            <If Condition="[matchesImgHghtCollection.Count &gt; 0]" DisplayName="If at least one height attribute found" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If.Then>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[heightList]" DisplayName="Add Height-Attribute to Height-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[matchesImgHghtCollection.First.Groups(1).Value]" />
+                              </If.Then>
+                              <If.Else>
+                                <AddToCollection x:TypeArguments="x:String" Collection="[heightList]" DisplayName="Add Height-Attribute to Height-List" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="-" />
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Distinct Width to dictionary" sap:VirtualizedContainerService.HintSize="562,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_2" Key="img_wdth" Value="[String.Join(&quot;,&quot;, widthList)]" />
+                    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Distinct Height to dictionary" sap:VirtualizedContainerService.HintSize="562,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_3" Key="img_hght" Value="[String.Join(&quot;,&quot;, heightList)]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Get the count of &lt;table...&gt; Elements in the question" DisplayName="Get Table Metadata-Sequence" sap:VirtualizedContainerService.HintSize="334,108" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="img_cnt" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesImgWdthCollection" />
+                <Variable x:TypeArguments="scg:List(x:Int32)" Name="widthCollection" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionImg" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionHref" />
+                <Variable x:TypeArguments="x:Int32" Name="href_cnt" />
+                <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchesCollectionTable" />
+                <Variable x:TypeArguments="x:Int32" Name="tbl_cnt" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Matches BuilderPattern="&lt;img.*&gt;" DisplayName="Matches &lt;table" sap:VirtualizedContainerService.HintSize="398,59" sap2010:WorkflowViewState.IdRef="Matches_7" Input="[questionInnerHtml]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;&lt;img.*&gt;&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="&lt;table" RegexOption="IgnoreCase" Result="[matchesCollectionTable]" />
+              <Assign DisplayName="Assign tbl_cnt" sap:VirtualizedContainerService.HintSize="398,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[tbl_cnt]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[matchesCollectionTable.Count]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[io_question.Value]" DisplayName="Add Table-Tag-Count to dictionary" sap:VirtualizedContainerService.HintSize="398,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_7" Key="tbl_cnt" Value="[tbl_cnt.ToString]" />
+            </Sequence>
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
