@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>687,989</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1098,989</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -65,10 +65,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Processes an excel-list of moodle courses by checking exam configuration and questions in these moodle courses.&#xA;Björn Scheppler (scep@zhaw.ch)&#xA;Read instructions in \Documentation\Process_Documentation-DE.docx" DisplayName="zid-moodle-exam-checker" sap:VirtualizedContainerService.HintSize="697,795" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Processes an excel-list of moodle courses by checking exam configuration and questions in these moodle courses.&#xA;Björn Scheppler (scep@zhaw.ch)&#xA;Read instructions in \Documentation\Process_Documentation-DE.docx ..." DisplayName="zid-moodle-exam-checker" sap:VirtualizedContainerService.HintSize="697,795" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -79,7 +78,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Get the next transaction to be processed." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="947,1091" sap2010:WorkflowViewState.IdRef="State_4">
+    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Get the next transaction to be processed." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="251,112" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Entry>
         <Sequence sap2010:Annotation.AnnotationText="Retrieve a new transaction data to be processed.&#xA;The TransactionNumber variable holds the current transaction number and incrementing this variable makes the framework retrieve the next transaction. If the framework is retrying a failed transaction, this variable is not incremented until the maximum number of retry attempts is reached." DisplayName="Retrieve Data" sap:VirtualizedContainerService.HintSize="901,673" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <Sequence.Variables>
@@ -127,39 +126,17 @@
                 <TryCatch.Try>
                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetTransactionData workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                        <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_TransactionItem">
-                        <mva:VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                      </OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">
-                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField1" />
-                      </OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">
-                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField2" />
-                      </OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">
-                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionID" />
-                      </OutArgument>
-                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">
-                        <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="TransactionData" />
-                      </InOutArgument>
-                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="io_TransactionDataColumns">
-                        <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="TransactionDataColumns" />
-                      </InOutArgument>
-                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="io_QuestionsDataColumns">
-                        <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="QuestionsDataColumns" />
-                      </InOutArgument>
-                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">
-                        <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                      </InOutArgument>
-                      <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_hasCustomTransactionNumbers">
-                        <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="hasCustomTransactionNumbers" />
-                      </InOutArgument>
-                      <InOutArgument x:TypeArguments="scg:List(x:Int32)" x:Key="io_customTransactionNumbers">
-                        <mva:VisualBasicReference x:TypeArguments="scg:List(x:Int32)" ExpressionText="customTransactionNumbers" />
-                      </InOutArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_TransactionItem">[TransactionItem]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">[TransactionField1]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">[TransactionField2]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">[TransactionID]</OutArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
+                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="io_TransactionDataColumns">[TransactionDataColumns]</InOutArgument>
+                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="io_QuestionsDataColumns">[QuestionsDataColumns]</InOutArgument>
+                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">[TransactionNumber]</InOutArgument>
+                      <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_hasCustomTransactionNumbers">[hasCustomTransactionNumbers]</InOutArgument>
+                      <InOutArgument x:TypeArguments="scg:List(x:Int32)" x:Key="io_customTransactionNumbers">[customTransactionNumbers]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
