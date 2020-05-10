@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>466,1160</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1058,1160</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -41,7 +41,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -65,7 +65,6 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="12 Get Data over Categories Containing Questions" sap:VirtualizedContainerService.HintSize="476,995" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -102,131 +101,150 @@
                 </ui:Target>
               </ui:FindChildren.Target>
             </ui:FindChildren>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Check for each category group and its categories, if they are containing questions. If so, add them to the dictionary of such categories." DisplayName="For Each Category Group" sap:VirtualizedContainerService.HintSize="733,1601" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[categoryGroupsEnumerable]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Check for each category group and its categories, if they are containing questions. If so, add them to the dictionary of such categories." DisplayName="For Each Category Group" sap:VirtualizedContainerService.HintSize="613,804" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[categoryGroupsEnumerable]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="categoryGroup" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="697,1425" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="577,628" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="categoriesEnumerable" />
+                      <Variable x:TypeArguments="x:Boolean" Name="labelMatches" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:FindChildren Children="[categoriesEnumerable]" DisplayName="Get All Categories in Group (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="655,106" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_CHILDREN">
-                      <ui:FindChildren.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[categoryGroup]" Id="f693061c-d1de-486f-89cd-4b8ba8e40683" InformativeScreenshot="aa99e6d7fae2083e61f49375ce2bbad2">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:FindChildren.Target>
-                    </ui:FindChildren>
-                    <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Category" sap:VirtualizedContainerService.HintSize="655,1187" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[categoriesEnumerable]">
-                      <ui:ForEach.Body>
-                        <ActivityAction x:TypeArguments="ui:UiElement">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="ui:UiElement" Name="category" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="619,1053" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="x:String" Name="categoryName" />
-                              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="categoryMatches" />
-                            </Sequence.Variables>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute aaaname of Category" sap:VirtualizedContainerService.HintSize="577,96" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
-                              <ui:GetAttribute.Result>
-                                <OutArgument x:TypeArguments="x:String">[categoryName]</OutArgument>
-                              </ui:GetAttribute.Result>
-                              <ui:GetAttribute.Target>
-                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
-                                  <ui:Target.TimeoutMS>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:Target.TimeoutMS>
-                                  <ui:Target.WaitForReady>
-                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                  </ui:Target.WaitForReady>
-                                </ui:Target>
-                              </ui:GetAttribute.Target>
-                            </ui:GetAttribute>
-                            <ui:Matches BuilderPattern="^\s*(.*)\((\d*)\)" DisplayName="Category Name contains questions count (Matches)" sap:VirtualizedContainerService.HintSize="577,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[categoryName]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;^\\s*(.*)\\((\\d*)\\)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^\s*(.*)\((\d*)\)" RegexOption="IgnoreCase" Result="[categoryMatches]" />
-                            <If Condition="[categoryMatches.Count &gt; 0]" DisplayName="If Category Name contains Questions count" sap:VirtualizedContainerService.HintSize="577,726" sap2010:WorkflowViewState.IdRef="If_1">
-                              <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="418,578" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                    <ui:IsMatch DisplayName="Label of CategoryGroup matches Test, Kurs, Quiz or Course" sap:VirtualizedContainerService.HintSize="535,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[categoryGroup.Get(&quot;label&quot;).ToString]" IsBuilderTabModified="False" Pattern="^(Test\:|Quiz\:|Kurs\:|Course\:)" RegexOption="Compiled" Result="[labelMatches]" />
+                    <If Condition="[labelMatches]" DisplayName="If Label of Category matches Pattern" sap:VirtualizedContainerService.HintSize="535,437" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence DisplayName="Process CategoryGroup" sap:VirtualizedContainerService.HintSize="376,289" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:FindChildren Children="[categoriesEnumerable]" DisplayName="Get All Categories in Group (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_CHILDREN">
+                            <ui:FindChildren.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[categoryGroup]" Id="f693061c-d1de-486f-89cd-4b8ba8e40683" InformativeScreenshot="aa99e6d7fae2083e61f49375ce2bbad2">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:FindChildren.Target>
+                          </ui:FindChildren>
+                          <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Category" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[categoriesEnumerable]">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="ui:UiElement">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:UiElement" Name="category" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="619,1053" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                   <Sequence.Variables>
-                                    <Variable x:TypeArguments="x:String" Name="valueAttribute" />
-                                    <Variable x:TypeArguments="x:String" Name="categoryUrl" />
-                                    <Variable x:TypeArguments="x:String" Name="urlAttribute" />
+                                    <Variable x:TypeArguments="x:String" Name="categoryName" />
+                                    <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="categoryMatches" />
                                   </Sequence.Variables>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Build Category Url" sap:VirtualizedContainerService.HintSize="376,424" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="value" DisplayName="Get Attribute value of Category" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="GetAttribute_3">
-                                      <ui:GetAttribute.Result>
-                                        <OutArgument x:TypeArguments="x:String">[valueAttribute]</OutArgument>
-                                      </ui:GetAttribute.Result>
-                                      <ui:GetAttribute.Target>
-                                        <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
-                                          <ui:Target.TimeoutMS>
-                                            <InArgument x:TypeArguments="x:Int32" />
-                                          </ui:Target.TimeoutMS>
-                                          <ui:Target.WaitForReady>
-                                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                                          </ui:Target.WaitForReady>
-                                        </ui:Target>
-                                      </ui:GetAttribute.Target>
-                                    </ui:GetAttribute>
-                                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get Attribute url of Category" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
-                                      <ui:GetAttribute.Result>
-                                        <OutArgument x:TypeArguments="x:String">[urlAttribute]</OutArgument>
-                                      </ui:GetAttribute.Result>
-                                      <ui:GetAttribute.Target>
-                                        <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
-                                          <ui:Target.TimeoutMS>
-                                            <InArgument x:TypeArguments="x:Int32" />
-                                          </ui:Target.TimeoutMS>
-                                          <ui:Target.WaitForReady>
-                                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                                          </ui:Target.WaitForReady>
-                                        </ui:Target>
-                                      </ui:GetAttribute.Target>
-                                    </ui:GetAttribute>
-                                    <Assign DisplayName="Generate Category Url" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:String">[categoryUrl]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:String">[urlAttribute + "&amp;category=" + Split(valueAttribute,",")(0) + "%2C" + Split(valueAttribute,",")(1)]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
-                                  </Sequence>
-                                  <AddToCollection x:TypeArguments="scg:Dictionary(x:String, x:String)" Collection="[io_categoriesContainingQuestions]" DisplayName="Add Category To Category-Collection" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[New Dictionary(Of String, String) From { {&quot;aaname&quot;, categoryName}, {&quot;categoryUrl&quot;, categoryUrl}, {&quot;categoryName&quot;, categoryMatches(0).Groups(1).Value}, {&quot;questionCount&quot;, categoryMatches(0).Groups(2).Value} }]" />
+                                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute aaaname of Category" sap:VirtualizedContainerService.HintSize="577,96" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                                    <ui:GetAttribute.Result>
+                                      <OutArgument x:TypeArguments="x:String">[categoryName]</OutArgument>
+                                    </ui:GetAttribute.Result>
+                                    <ui:GetAttribute.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:GetAttribute.Target>
+                                  </ui:GetAttribute>
+                                  <ui:Matches BuilderPattern="^\s*(.*)\((\d*)\)" DisplayName="Category Name contains questions count (Matches)" sap:VirtualizedContainerService.HintSize="577,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[categoryName]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Erweitert&quot;,&quot;OperationValue&quot;:&quot;^\\s*(.*)\\((\\d*)\\)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^\s*(.*)\((\d*)\)" RegexOption="IgnoreCase" Result="[categoryMatches]" />
+                                  <If Condition="[categoryMatches.Count &gt; 0]" DisplayName="If Category Name contains Questions count" sap:VirtualizedContainerService.HintSize="577,726" sap2010:WorkflowViewState.IdRef="If_1">
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="418,578" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="valueAttribute" />
+                                          <Variable x:TypeArguments="x:String" Name="categoryUrl" />
+                                          <Variable x:TypeArguments="x:String" Name="urlAttribute" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Sequence DisplayName="Build Category Url" sap:VirtualizedContainerService.HintSize="376,424" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="value" DisplayName="Get Attribute value of Category" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="GetAttribute_3">
+                                            <ui:GetAttribute.Result>
+                                              <OutArgument x:TypeArguments="x:String">[valueAttribute]</OutArgument>
+                                            </ui:GetAttribute.Result>
+                                            <ui:GetAttribute.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
+                                                <ui:Target.TimeoutMS>
+                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                </ui:Target.TimeoutMS>
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:GetAttribute.Target>
+                                          </ui:GetAttribute>
+                                          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get Attribute url of Category" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
+                                            <ui:GetAttribute.Result>
+                                              <OutArgument x:TypeArguments="x:String">[urlAttribute]</OutArgument>
+                                            </ui:GetAttribute.Result>
+                                            <ui:GetAttribute.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[category]" Id="605e91dd-cbad-47bb-aa3d-e5ecd9babd92">
+                                                <ui:Target.TimeoutMS>
+                                                  <InArgument x:TypeArguments="x:Int32" />
+                                                </ui:Target.TimeoutMS>
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:GetAttribute.Target>
+                                          </ui:GetAttribute>
+                                          <Assign DisplayName="Generate Category Url" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[categoryUrl]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[urlAttribute + "&amp;category=" + Split(valueAttribute,",")(0) + "%2C" + Split(valueAttribute,",")(1)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                        <AddToCollection x:TypeArguments="scg:Dictionary(x:String, x:String)" Collection="[io_categoriesContainingQuestions]" DisplayName="Add Category To Category-Collection" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[New Dictionary(Of String, String) From { {&quot;aaname&quot;, categoryName}, {&quot;categoryUrl&quot;, categoryUrl}, {&quot;categoryName&quot;, categoryMatches(0).Groups(1).Value}, {&quot;questionCount&quot;, categoryMatches(0).Groups(2).Value} }]" />
+                                      </Sequence>
+                                    </If.Then>
+                                  </If>
                                 </Sequence>
-                              </If.Then>
-                            </If>
-                          </Sequence>
-                        </ActivityAction>
-                      </ui:ForEach.Body>
-                    </ui:ForEach>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ForEach>
+                        </Sequence>
+                      </If.Then>
+                    </If>
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
