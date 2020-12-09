@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1098,1706</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1008,1631</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
@@ -37,7 +37,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -61,33 +61,38 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="21 Get Metadata Of Questions" sap:VirtualizedContainerService.HintSize="689,1541" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="21 Get Metadata Of Questions" sap:VirtualizedContainerService.HintSize="680,1566" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="647,1449" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="638,1474" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="613,1303" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="604,1328" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" CurrentIndex="{x:Null}" DisplayName="For Each Question" sap:VirtualizedContainerService.HintSize="571,1211" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[io_questionsDictionary]">
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" CurrentIndex="{x:Null}" DisplayName="For Each Question" sap:VirtualizedContainerService.HintSize="562,1236" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[io_questionsDictionary]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" Name="question" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each Question-Sequence" sap:VirtualizedContainerService.HintSize="535,1078" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence DisplayName="For Each Question-Sequence" sap:VirtualizedContainerService.HintSize="526,1103" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="defaultMark" />
                       <Variable x:TypeArguments="x:Boolean" Name="shuffle" />
@@ -100,8 +105,8 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Question Edit-Page" sap:VirtualizedContainerService.HintSize="493,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[question.Value.Item(&quot;edit_url&quot;).Split(&quot;&quot;&quot;&quot;c)(1)]" />
-                    <ui:UiElementExists sap2010:Annotation.AnnotationText="Sometimes the previous action took so much time, that the Autosave-Mode of Moodle gets triggerd and therefore a popup shows." DisplayName="Element Exists 'Button' 'Leave page'" Exists="[popupButtonExists]" sap:VirtualizedContainerService.HintSize="493,163" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                    <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Question Edit-Page" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[question.Value.Item(&quot;edit_url&quot;).Split(&quot;&quot;&quot;&quot;c)(1)]" />
+                    <ui:UiElementExists sap2010:Annotation.AnnotationText="Sometimes the previous action took so much time, that the Autosave-Mode of Moodle gets triggerd and therefore a popup shows." DisplayName="Element Exists 'Button' 'Leave page'" Exists="[popupButtonExists]" sap:VirtualizedContainerService.HintSize="484,163" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                       <ui:UiElementExists.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8d65fde4-1a87-4752-8773-f9a1311af8f9" InformativeScreenshot="ea16306ca3b91da737310d48a430964f" Selector="&lt;wnd app='iexplore.exe' cls='#32770' /&gt;&lt;wnd aaname='Windows Internet Explorer' cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' aastate='Standard, markierbar' /&gt;" TimeoutMS="1000">
                           <ui:Target.WaitForReady>
@@ -115,7 +120,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:UiElementExists>
-                    <If Condition="[popupButtonExists]" DisplayName="If Button 'Leave page' exists" sap:VirtualizedContainerService.HintSize="493,253" sap2010:WorkflowViewState.IdRef="If_6">
+                    <If Condition="[popupButtonExists]" DisplayName="If Button 'Leave page' exists" sap:VirtualizedContainerService.HintSize="484,253" sap2010:WorkflowViewState.IdRef="If_6">
                       <If.Then>
                         <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button' 'Leave page'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                           <ui:Click.CursorPosition>
@@ -141,7 +146,7 @@
                         </ui:Click>
                       </If.Then>
                     </If>
-                    <Sequence DisplayName="Checks For MC-Type-Sequence" sap:VirtualizedContainerService.HintSize="493,66" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <Sequence DisplayName="Checks For MC-Type-Sequence" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_15">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -158,16 +163,16 @@
                         </If.Then>
                       </If>
                     </Sequence>
-                    <Sequence DisplayName="Checks For Kprim-Type-Sequence" sap:VirtualizedContainerService.HintSize="493,66" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence DisplayName="Checks For Kprim-Type-Sequence" sap:VirtualizedContainerService.HintSize="566,352" sap2010:WorkflowViewState.IdRef="Sequence_17">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[question.Value.Item(&quot;type&quot;).Equals(&quot;Kprime (ETH)&quot;)]" DisplayName="If type is Kprim" sap:VirtualizedContainerService.HintSize="538,235" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If Condition="[question.Value.Item(&quot;type&quot;).Equals(&quot;Kprim (ETH)&quot;)]" DisplayName="If type is Kprim" sap:VirtualizedContainerService.HintSize="524,260" sap2010:WorkflowViewState.IdRef="If_5">
                         <If.Then>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="23 Get Metadata Of Kprim-Questions (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\Process\23GetMetadataOfKprimQuestions.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="23 Get Metadata Of Kprim-Questions (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\Process\23GetMetadataOfKprimQuestions.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
                               <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">[question]</InOutArgument>
                             </ui:InvokeWorkflowFile.Arguments>
@@ -175,13 +180,13 @@
                         </If.Then>
                       </If>
                     </Sequence>
-                    <Sequence DisplayName="Checks For All Types-Sequence" sap:VirtualizedContainerService.HintSize="493,179" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <Sequence DisplayName="Checks For All Types-Sequence" sap:VirtualizedContainerService.HintSize="484,204" sap2010:WorkflowViewState.IdRef="Sequence_14">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="24 Get Question Content Metadata (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Process\24GetQuestionContentMetadata.xaml">
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="24 Get Question Content Metadata (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Process\24GetQuestionContentMetadata.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">[question]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>

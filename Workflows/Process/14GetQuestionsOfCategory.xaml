@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1040,2716</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1026,2616</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="25">
+    <scg:List x:TypeArguments="x:String" Capacity="50">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -62,21 +62,26 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="14 Get Questions Of Category" sap:VirtualizedContainerService.HintSize="1050,2551" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="14 Get Questions Of Category" sap:VirtualizedContainerService.HintSize="1036,2551" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="1008,2459" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="994,2459" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="974,2313" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="960,2313" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="questionRows" />
               <Variable x:TypeArguments="x:Int32" Name="counter" />
@@ -86,7 +91,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Show All Questions in Category-Sequence" sap:VirtualizedContainerService.HintSize="932,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence DisplayName="Show All Questions in Category-Sequence" sap:VirtualizedContainerService.HintSize="918,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="showAllQuestionsLinkExists" />
                 <Variable x:TypeArguments="x:String" Name="pagingLinkText" />
@@ -161,7 +166,7 @@
                 </If.Then>
               </If>
             </Sequence>
-            <ui:FindChildren Children="[questionRows]" DisplayName="Find rows with Question Metadata (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="932,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+            <ui:FindChildren Children="[questionRows]" DisplayName="Find rows with Question Metadata (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="918,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
               <ui:FindChildren.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1fa59a1d-7299-4472-988c-1f4cac6ffa26" Selector="&lt;webctrl tag='TBODY' parentid='categoryquestions' idx='1' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -170,7 +175,7 @@
                 </ui:Target>
               </ui:FindChildren.Target>
             </ui:FindChildren>
-            <Assign sap2010:Annotation.AnnotationText="For differentiating between odd and even table rows" DisplayName="Assign counter" sap:VirtualizedContainerService.HintSize="932,102" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap2010:Annotation.AnnotationText="For differentiating between odd and even table rows" DisplayName="Assign counter" sap:VirtualizedContainerService.HintSize="918,102" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
               </Assign.To>
@@ -183,19 +188,19 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Question Row In Table" sap:VirtualizedContainerService.HintSize="932,1865" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[questionRows]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Question Row In Table" sap:VirtualizedContainerService.HintSize="918,1865" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[questionRows]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="questionRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="896,1732" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="882,1732" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[counter Mod 2 = 1]" DisplayName="Only process odd rows (If)" sap:VirtualizedContainerService.HintSize="854,1540" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[counter Mod 2 = 1]" DisplayName="Only process odd rows (If)" sap:VirtualizedContainerService.HintSize="840,1540" sap2010:WorkflowViewState.IdRef="If_2">
                       <If.Then>
                         <Sequence DisplayName="Process Question Row-Sequence" sap:VirtualizedContainerService.HintSize="695,1393" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <Sequence.Variables>
@@ -348,7 +353,7 @@
                                       <OutArgument x:TypeArguments="x:String">[questionName]</OutArgument>
                                     </ui:GetAttribute.Result>
                                     <ui:GetAttribute.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='LABEL' parentclass='questionname' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='SPAN' class='questionname flex-grow-1 flex-shrink-1 text-truncate' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
                                         <ui:Target.TimeoutMS>
                                           <InArgument x:TypeArguments="x:Int32" />
                                         </ui:Target.TimeoutMS>
@@ -360,7 +365,7 @@
                                       <OutArgument x:TypeArguments="x:String">[questionEditUrl]</OutArgument>
                                     </ui:GetAttribute.Result>
                                     <ui:GetAttribute.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='A' parentclass='*editaction' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_DESCENDANTS, New Selector(&quot;&lt;webctrl parentid='action-menu-*-menu' tag='A' idx='1' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
                                         <ui:Target.TimeoutMS>
                                           <InArgument x:TypeArguments="x:Int32" />
                                         </ui:Target.TimeoutMS>
@@ -372,7 +377,7 @@
                                       <OutArgument x:TypeArguments="x:String">[questionPreviewUrl]</OutArgument>
                                     </ui:GetAttribute.Result>
                                     <ui:GetAttribute.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_CHILDREN, new Selector(&quot;&lt;webctrl tag='A' parentclass='*previewaction' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[questionRow.FindFirst(FindScope.FIND_DESCENDANTS, New Selector(&quot;&lt;webctrl parentid='action-menu-*-menu' tag='A' idx='4' /&gt;&quot;),Nothing)]" Id="b4ad33e3-1615-40da-900d-007b188a809a" WaitForReady="NONE">
                                         <ui:Target.TimeoutMS>
                                           <InArgument x:TypeArguments="x:Int32" />
                                         </ui:Target.TimeoutMS>
@@ -427,7 +432,7 @@
                         </Sequence>
                       </If.Then>
                     </If>
-                    <Assign sap:VirtualizedContainerService.HintSize="854,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign sap:VirtualizedContainerService.HintSize="840,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
                       </Assign.To>
