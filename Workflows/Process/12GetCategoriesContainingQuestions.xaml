@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1058,1160</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,1300</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -67,13 +67,24 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="12 Get Data over Categories Containing Questions" sap:VirtualizedContainerService.HintSize="476,995" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="12 Get Data over Categories Containing Questions" sap:VirtualizedContainerService.HintSize="476,1095" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="moodleUrl" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="434,903" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[moodleUrl]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="434,903" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -91,7 +102,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:FindChildren Children="[categoryGroupsEnumerable]" DisplayName="Get All Category-Groups in Dropdown (Find Children)" Filter="&lt;webctrl /&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
               <ui:FindChildren.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f693061c-d1de-486f-89cd-4b8ba8e40683" InformativeScreenshot="aa99e6d7fae2083e61f49375ce2bbad2" Selector="&lt;html url='https://moodle1.zhaw.ch/question/edit.php?cmid=*' /&gt;&lt;webctrl id='id_selectacategory' tag='SELECT' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f693061c-d1de-486f-89cd-4b8ba8e40683" InformativeScreenshot="aa99e6d7fae2083e61f49375ce2bbad2" Selector="&lt;html url='{{moodleUrl}}/question/edit.php?cmid=*' /&gt;&lt;webctrl id='id_selectacategory' tag='SELECT' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -101,7 +112,7 @@
                 </ui:Target>
               </ui:FindChildren.Target>
             </ui:FindChildren>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Check for each category group and its categories, if they are containing questions. If so, add them to the dictionary of such categories." DisplayName="For Each Category Group" sap:VirtualizedContainerService.HintSize="613,804" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[categoryGroupsEnumerable]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Check for each category group and its categories, if they are containing questions. If so, add them to the dictionary of such categories." DisplayName="For Each Category Group" sap:VirtualizedContainerService.HintSize="334,153" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[categoryGroupsEnumerable]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>

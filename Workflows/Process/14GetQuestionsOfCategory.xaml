@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1026,2616</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,5106</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="50">
+    <scg:List x:TypeArguments="x:String" Capacity="25">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -66,22 +66,32 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="14 Get Questions Of Category" sap:VirtualizedContainerService.HintSize="1036,2551" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="14 Get Questions Of Category" sap:VirtualizedContainerService.HintSize="1036,4901" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="moodleUrl" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="994,2459" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <Assign sap:VirtualizedContainerService.HintSize="994,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[moodleUrl]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="994,4709" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="960,2313" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="960,4563" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="questionRows" />
               <Variable x:TypeArguments="x:Int32" Name="counter" />
@@ -91,7 +101,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Show All Questions in Category-Sequence" sap:VirtualizedContainerService.HintSize="918,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence DisplayName="Show All Questions in Category-Sequence" sap:VirtualizedContainerService.HintSize="918,1003" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="showAllQuestionsLinkExists" />
                 <Variable x:TypeArguments="x:String" Name="pagingLinkText" />
@@ -99,11 +109,11 @@
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:UiElementExists DisplayName="Element Exists 'Show all questions'" Exists="[showAllQuestionsLinkExists]" sap:VirtualizedContainerService.HintSize="694,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists DisplayName="Element Exists 'Show all questions'" Exists="[showAllQuestionsLinkExists]" sap:VirtualizedContainerService.HintSize="671,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f6fa332-69d8-4c70-bf1e-dc13010d5c15" InformativeScreenshot="a126e8134d8e125d2ce20703e42d7540" Selector="&lt;webctrl parentid='region-main' tag='A' parentclass='paging' /&gt;" WaitForReady="NONE">
                     <ui:Target.TimeoutMS>
@@ -112,15 +122,15 @@
                   </ui:Target>
                 </ui:UiElementExists.Target>
               </ui:UiElementExists>
-              <If Condition="[showAllQuestionsLinkExists]" DisplayName="If Element 'Show all questions' exist" sap:VirtualizedContainerService.HintSize="694,765" sap2010:WorkflowViewState.IdRef="If_7">
+              <If Condition="[showAllQuestionsLinkExists]" DisplayName="If Element 'Show all questions' exist" sap:VirtualizedContainerService.HintSize="671,765" sap2010:WorkflowViewState.IdRef="If_7">
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="535,618" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <Sequence sap:VirtualizedContainerService.HintSize="526,618" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute 'aaname' from element" sap:VirtualizedContainerService.HintSize="493,134" sap2010:WorkflowViewState.IdRef="GetAttribute_11">
+                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute 'aaname' from element" sap:VirtualizedContainerService.HintSize="484,134" sap2010:WorkflowViewState.IdRef="GetAttribute_11">
                       <ui:GetAttribute.Result>
                         <OutArgument x:TypeArguments="x:String">[pagingLinkText]</OutArgument>
                       </ui:GetAttribute.Result>
@@ -135,8 +145,8 @@
                         </ui:Target>
                       </ui:GetAttribute.Target>
                     </ui:GetAttribute>
-                    <ui:IsMatch BuilderPattern="all" DisplayName="Does link text contain &quot;all&quot;?" sap:VirtualizedContainerService.HintSize="493,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[pagingLinkText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Buchstäblich&quot;,&quot;OperationValue&quot;:&quot;all&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="all" RegexOption="IgnoreCase" Result="[pagingLinkContainsAll]" />
-                    <If Condition="[pagingLinkContainsAll]" DisplayName="If Show All Questions Link exists" sap:VirtualizedContainerService.HintSize="493,253" sap2010:WorkflowViewState.IdRef="If_6">
+                    <ui:IsMatch BuilderPattern="all" DisplayName="Does link text contain &quot;all&quot;?" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[pagingLinkText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Buchstäblich&quot;,&quot;OperationValue&quot;:&quot;all&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Genau&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="all" RegexOption="IgnoreCase" Result="[pagingLinkContainsAll]" />
+                    <If Condition="[pagingLinkContainsAll]" DisplayName="If Show All Questions Link exists" sap:VirtualizedContainerService.HintSize="484,253" sap2010:WorkflowViewState.IdRef="If_6">
                       <If.Then>
                         <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Show all questions-Link" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                           <ui:Click.CursorPosition>
@@ -188,21 +198,21 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Question Row In Table" sap:VirtualizedContainerService.HintSize="918,1865" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[questionRows]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Question Row In Table" sap:VirtualizedContainerService.HintSize="918,3178" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[questionRows]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="questionRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="882,1732" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Hauptteil" sap:VirtualizedContainerService.HintSize="882,3045" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[counter Mod 2 = 1]" DisplayName="Only process odd rows (If)" sap:VirtualizedContainerService.HintSize="840,1540" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[counter Mod 2 = 1]" DisplayName="Only process odd rows (If)" sap:VirtualizedContainerService.HintSize="840,2853" sap2010:WorkflowViewState.IdRef="If_2">
                       <If.Then>
-                        <Sequence DisplayName="Process Question Row-Sequence" sap:VirtualizedContainerService.HintSize="695,1393" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence DisplayName="Process Question Row-Sequence" sap:VirtualizedContainerService.HintSize="695,2706" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="questionName" />
                             <Variable x:TypeArguments="x:String" Name="questionEditUrl" />
@@ -218,7 +228,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Get Question Metadata-Sequence" sap:VirtualizedContainerService.HintSize="653,1301" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <Sequence DisplayName="Get Question Metadata-Sequence" sap:VirtualizedContainerService.HintSize="653,2614" sap2010:WorkflowViewState.IdRef="Sequence_6">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:Boolean" Name="processQuestion" />
                               <Variable x:TypeArguments="x:String" Name="nameOfQuestionsLink" />
@@ -315,12 +325,12 @@
                                 </Assign>
                               </If.Else>
                             </If>
-                            <If Condition="[processQuestion]" DisplayName="If Question shall be processed" sap:VirtualizedContainerService.HintSize="611,213" sap2010:WorkflowViewState.IdRef="If_4">
+                            <If Condition="[processQuestion]" DisplayName="If Question shall be processed" sap:VirtualizedContainerService.HintSize="611,1526" sap2010:WorkflowViewState.IdRef="If_4">
                               <If.Then>
-                                <Sequence DisplayName="Process Question Sequence" sap:VirtualizedContainerService.HintSize="440,1382" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence DisplayName="Process Question Sequence" sap:VirtualizedContainerService.HintSize="440,1379" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
@@ -424,7 +434,7 @@
                                       <InArgument x:TypeArguments="x:String">[questionModifiedFrom.Split("("c)(0).Trim]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[io_questionsDictionary]" DisplayName="Add Question To Question Dictionary" sap:VirtualizedContainerService.HintSize="398,138" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="[questionId.TrimStart(&quot;q&quot;c)]" Value="[New Dictionary(Of String, String) From { {&quot;type&quot;, questionType}, {&quot;name&quot;, questionName}, {&quot;edit_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionEditUrl + &quot;&quot;&quot;)&quot;}, {&quot;preview_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionPreviewUrl + &quot;&quot;&quot;)&quot;}, {&quot;created_from&quot;, questionCreatedFrom}, {&quot;modified_from&quot;, questionModifiedFrom}, {&quot;modified_date&quot;, questionModifiedDate} }]" />
+                                  <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[io_questionsDictionary]" DisplayName="Add Question To Question Dictionary" sap:VirtualizedContainerService.HintSize="398,135" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="[questionId.TrimStart(&quot;q&quot;c)]" Value="[New Dictionary(Of String, String) From { {&quot;type&quot;, questionType}, {&quot;name&quot;, questionName}, {&quot;edit_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionEditUrl + &quot;&quot;&quot;)&quot;}, {&quot;preview_url&quot;, &quot;=hyperlink(&quot;&quot;&quot; + questionPreviewUrl + &quot;&quot;&quot;)&quot;}, {&quot;created_from&quot;, questionCreatedFrom}, {&quot;modified_from&quot;, questionModifiedFrom}, {&quot;modified_date&quot;, questionModifiedDate} }]" />
                                 </Sequence>
                               </If.Then>
                             </If>

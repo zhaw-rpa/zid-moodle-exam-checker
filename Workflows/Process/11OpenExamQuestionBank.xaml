@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1098,2202</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,2302</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -62,17 +62,26 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="11 Open Exam Question Bank" sap:VirtualizedContainerService.HintSize="1026,2037" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="11 Open Exam Question Bank" sap:VirtualizedContainerService.HintSize="1026,2137" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="fragensammlungExists" />
       <Variable x:TypeArguments="x:Boolean" Name="formAddQuestionExists" />
+      <Variable x:TypeArguments="x:String" Name="moodleUrl" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Moodle'" sap:VirtualizedContainerService.HintSize="984,1945" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='https://moodle1.zhaw.ch*' /&gt;">
+    <Assign sap:VirtualizedContainerService.HintSize="984,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[moodleUrl]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Moodle'" sap:VirtualizedContainerService.HintSize="984,1945" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -130,7 +139,7 @@
             </If>
             <ui:UiElementExists DisplayName="Element Exists 'Fragensammlung' (href=...question/edit)" Exists="[fragensammlungExists]" sap:VirtualizedContainerService.HintSize="908,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dc80224c-72e0-42ee-a1b9-6bec111db4c3" InformativeScreenshot="0b2abfc060acf4433b6cd132a07baa60" Selector="&lt;html url='https://moodle1.zhaw.ch/mod/quiz/view.php?id=*' /&gt;&lt;webctrl tag='A' href='https://moodle1.zhaw.ch/question/edit.php?cmid=*' parentid='action-menu-3-menu' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutShort&quot;).ToString)]">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dc80224c-72e0-42ee-a1b9-6bec111db4c3" InformativeScreenshot="0b2abfc060acf4433b6cd132a07baa60" Selector="&lt;html url='{{moodleUrl}}/mod/quiz/view.php?id=*' /&gt;&lt;webctrl tag='A' href='{{moodleUrl}}/question/edit.php?cmid=*' parentid='action-menu-3-menu' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutShort&quot;).ToString)]">
                   <ui:Target.WaitForReady>
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
@@ -163,7 +172,7 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a6a6b05d-87ba-4308-ad3e-c0d423048901" InformativeScreenshot="f3bb8d35d5fd707769596b8001e2578c" Selector="&lt;html url='https://moodle1.zhaw.ch/mod/quiz/view.php?id=*' /&gt;&lt;webctrl tag='A' href='https://moodle1.zhaw.ch/question/edit.php?cmid=*' parentid='action-menu-3-menu' /&gt;">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a6a6b05d-87ba-4308-ad3e-c0d423048901" InformativeScreenshot="f3bb8d35d5fd707769596b8001e2578c" Selector="&lt;html url='{{moodleUrl}}/mod/quiz/view.php?id=*' /&gt;&lt;webctrl tag='A' href='{{moodleUrl}}/question/edit.php?cmid=*' parentid='action-menu-3-menu' /&gt;">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -175,7 +184,7 @@
                   </ui:Click>
                   <ui:UiElementExists DisplayName="Element Exists 'New Question' (id_fullname)" Exists="[formAddQuestionExists]" sap:VirtualizedContainerService.HintSize="621,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="940bf0dc-4bab-4c2d-8977-d7b0808b1bdf" InformativeScreenshot="b8faf5d9d675329b0359f1410a25d3a8" Selector="&lt;html url='https://moodle1.zhaw.ch/question/edit.php?cmid=*' /&gt;&lt;webctrl action='https://moodle1.zhaw.ch/question/addquestion.php' tag='FORM' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutShort&quot;).ToString)]">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="940bf0dc-4bab-4c2d-8977-d7b0808b1bdf" InformativeScreenshot="b8faf5d9d675329b0359f1410a25d3a8" Selector="&lt;html url='{{moodleUrl}}/question/edit.php?cmid=*' /&gt;&lt;webctrl action='{{moodleUrl}}/question/addquestion.php' tag='FORM' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutShort&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -198,7 +207,7 @@
                             <OutArgument x:TypeArguments="x:String">[currentUrl]</OutArgument>
                           </ui:GetAttribute.Result>
                           <ui:GetAttribute.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="44ffca47-e2cd-46a7-b38f-2e9a50cde724" InformativeScreenshot="3826cf8a594b6b96067ea6d3ac95c72a" Selector="&lt;html url='https://moodle1.zhaw.ch/question/edit.php?cmid=*' /&gt;&#xA;&lt;webctrl action='https://moodle1.zhaw.ch/question/addquestion.php' tag='FORM' /&gt;">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="44ffca47-e2cd-46a7-b38f-2e9a50cde724" InformativeScreenshot="3826cf8a594b6b96067ea6d3ac95c72a" Selector="&lt;html url='{{moodleUrl}}/question/edit.php?cmid=*' /&gt;&lt;webctrl action='{{moodleUrl}}/question/addquestion.php' tag='FORM' /&gt;">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>

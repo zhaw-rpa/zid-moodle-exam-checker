@@ -5,10 +5,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,2456</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,2656</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LogIntoMoodle_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="22">
+    <scg:List x:TypeArguments="x:String" Capacity="44">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -31,10 +31,11 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -57,12 +58,14 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Opens the Moodle-Main-Page, which is defined in the setting &quot;moodle_mainpage&quot;, in IE. If no user is currently logged in, getting the credentials to Moodle from WCM and tries to login in three steps (Moodle, Switch Wayf and Switch Edu-Id)." DisplayName="LogIntoMoodle" sap:VirtualizedContainerService.HintSize="854,2391" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Opens the Moodle-Main-Page, which is defined in the setting &quot;moodle_mainpage&quot;, in IE. If no user is currently logged in, getting the credentials to Moodle from WCM and tries to login in three steps (Moodle, Switch Wayf and Switch Edu-Id)." DisplayName="LogIntoMoodle" sap:VirtualizedContainerService.HintSize="854,2491" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="userName" />
       <Variable x:TypeArguments="ss:SecureString" Name="password" />
+      <Variable x:TypeArguments="x:String" Name="moodleUrl" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -70,7 +73,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Moodle Main Page in IE" sap:VirtualizedContainerService.HintSize="812,2257" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_Config(&quot;moodle_mainpage&quot;).ToString]">
+    <Assign sap:VirtualizedContainerService.HintSize="812,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[moodleUrl]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Moodle Main Page in IE" sap:VirtualizedContainerService.HintSize="812,2257" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[moodleUrl]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -184,7 +195,7 @@
             </If>
             <ui:UiElementExists DisplayName="Check if Username-Element Exists" Exists="[UsernameElementExists]" sap:VirtualizedContainerService.HintSize="736,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9fb4c17b-30a9-42e9-8c0d-8c684da3fcb8" InformativeScreenshot="a957d9230249f8c7aadc27f8d4e9814e" Selector="&lt;html url='https://moodle1.zhaw.ch/my/' /&gt;&lt;webctrl parentid='action-menu-toggle-1' tag='SPAN' class='*usertext*' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutMedium&quot;).ToString)]">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9fb4c17b-30a9-42e9-8c0d-8c684da3fcb8" InformativeScreenshot="a957d9230249f8c7aadc27f8d4e9814e" Selector="&lt;html url='{{moodleUrl}}*' /&gt;&lt;webctrl parentid='action-menu-toggle-1' tag='SPAN' class='*usertext*' /&gt;" TimeoutMS="[Int32.Parse(in_Config(&quot;TimeoutMedium&quot;).ToString)]">
                   <ui:Target.WaitForReady>
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
