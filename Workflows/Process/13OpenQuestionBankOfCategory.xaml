@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,1543</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,1589</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="24">
+    <scg:List x:TypeArguments="x:String" Capacity="48">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -34,6 +34,8 @@
       <x:String>UiPath</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -63,7 +65,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="13 Open Question Bank Of Category" sap:VirtualizedContainerService.HintSize="602,1378" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="13 Open Question Bank Of Category" sap:VirtualizedContainerService.HintSize="697,1424" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="moodleUrl" />
     </Sequence.Variables>
@@ -72,7 +74,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="655,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[moodleUrl]</OutArgument>
       </Assign.To>
@@ -80,13 +82,13 @@
         <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="560,1186" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="655,1232" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1040" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="621,1086" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="categoryGroupsEnumerable" />
               <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="categoriesContainingQuestions" />
@@ -98,8 +100,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Questions of Category" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_category(&quot;categoryUrl&quot;)]" />
-            <ui:UiElementExists sap2010:Annotation.AnnotationText="Sometimes the previous action took so much time, that the Autosave-Mode of Moodle gets triggerd and therefore a popup shows." DisplayName="Element Exists 'Button' 'Leave page'" Exists="[popupButtonExists]" sap:VirtualizedContainerService.HintSize="484,163" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+            <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Questions of Category" sap:VirtualizedContainerService.HintSize="579,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_category(&quot;categoryUrl&quot;)]" />
+            <ui:UiElementExists sap2010:Annotation.AnnotationText="Sometimes the previous action took so much time, that the Autosave-Mode of Moodle gets triggerd and therefore a popup shows." DisplayName="Element Exists 'Button' 'Leave page'" Exists="[popupButtonExists]" sap:VirtualizedContainerService.HintSize="579,163" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8d65fde4-1a87-4752-8773-f9a1311af8f9" InformativeScreenshot="ea16306ca3b91da737310d48a430964f" Selector="&lt;wnd app='iexplore.exe' cls='#32770' /&gt;&lt;wnd aaname='Windows Internet Explorer' cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' aastate='Standard, markierbar' /&gt;" TimeoutMS="1000">
                   <ui:Target.WaitForReady>
@@ -113,7 +115,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[popupButtonExists]" DisplayName="If Button 'Leave page' exists" sap:VirtualizedContainerService.HintSize="484,253" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[popupButtonExists]" DisplayName="If Button 'Leave page' exists" sap:VirtualizedContainerService.HintSize="579,253" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button' 'Leave page'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
@@ -139,7 +141,7 @@
                 </ui:Click>
               </If.Then>
             </If>
-            <ui:UiElementExists DisplayName="Element Exists 'questionscontainer'" Exists="[questionContainerExists]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Element Exists 'questionscontainer'" Exists="[questionContainerExists]" sap:VirtualizedContainerService.HintSize="579,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2b01276-4f85-48d5-9288-4b78e4e7dfd6" InformativeScreenshot="331a8bc070eb9f0ccc1f3baef2e2280e" Selector="&lt;webctrl id='questionscontainer' tag='DIV' /&gt;" WaitForReady="INTERACTIVE">
                   <ui:Target.TimeoutMS>
@@ -148,7 +150,18 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If Condition="[questionContainerExists]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[questionContainerExists]" sap:VirtualizedContainerService.HintSize="579,253" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <ui:Check ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Uncheck" AlterIfDisabled="True" DisplayName="Check 'INPUT  recurse_on'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Check_1">
+                  <ui:Check.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d53ed8ea-c79a-431a-b166-44a88a8b61e9" InformativeScreenshot="2afdaa6f36d8db4b52dee25d9fc771a0" Selector="&lt;webctrl id='recurse_on' tag='INPUT' type='checkbox' /&gt;" WaitForReady="COMPLETE">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                    </ui:Target>
+                  </ui:Check.Target>
+                </ui:Check>
+              </If.Then>
               <If.Else>
                 <Throw DisplayName="Exception while opening Question Bank of Category" Exception="[new BusinessRuleException(&quot;Category Question-Bank-Url &quot; + in_category(&quot;categoryUrl&quot;) + &quot; not opened successfully&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
               </If.Else>
