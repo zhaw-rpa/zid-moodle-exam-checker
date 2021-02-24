@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,2116</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1065,2507</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_01OpenMoodleCourseSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="25">
+    <scg:List x:TypeArguments="x:String" Capacity="50">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -35,10 +35,13 @@
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>UiPath.Excel</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -66,9 +69,10 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="21 Get Metadata Of Questions" sap:VirtualizedContainerService.HintSize="762,1951" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="21 Get Metadata Of Questions" sap:VirtualizedContainerService.HintSize="762,2342" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="moodleUrl" />
     </Sequence.Variables>
@@ -85,25 +89,25 @@
         <InArgument x:TypeArguments="x:String">[in_Config("moodle_mainpage").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="720,1759" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  Dashboard'" sap:VirtualizedContainerService.HintSize="720,2150" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3192b105f0bbd2f0a88ed3a2187fb478" Selector="&lt;html url='{{moodleUrl}}*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="686,1613" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do In Browser Sequence" sap:VirtualizedContainerService.HintSize="686,2004" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" CurrentIndex="{x:Null}" DisplayName="For Each Question" sap:VirtualizedContainerService.HintSize="644,1521" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[io_questionsDictionary]">
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" CurrentIndex="{x:Null}" DisplayName="For Each Question" sap:VirtualizedContainerService.HintSize="644,1912" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[io_questionsDictionary]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" Name="question" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each Question-Sequence" sap:VirtualizedContainerService.HintSize="608,1388" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence DisplayName="For Each Question-Sequence" sap:VirtualizedContainerService.HintSize="608,1779" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="defaultMark" />
                       <Variable x:TypeArguments="x:Boolean" Name="shuffle" />
@@ -168,12 +172,8 @@
                         <If.Then>
                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="22 Get Metadata Of MultipleChoice-Questions (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Process\22GetMetadataOfMultipleChoiceQuestions.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">
-                                <mva:VisualBasicReference x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" ExpressionText="question" />
-                              </InOutArgument>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                              </InArgument>
+                              <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">[question]</InOutArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </If.Then>
@@ -189,6 +189,24 @@
                       <If Condition="[question.Value.Item(&quot;type&quot;).Equals(&quot;Kprim (ETH)&quot;) Or question.Value.Item(&quot;type&quot;).Equals(&quot;Kprime (ETH)&quot;)]" DisplayName="If type is Kprim" sap:VirtualizedContainerService.HintSize="524,259" sap2010:WorkflowViewState.IdRef="If_5">
                         <If.Then>
                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="23 Get Metadata Of Kprim-Questions (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\Process\23GetMetadataOfKprimQuestions.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">[question]</InOutArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </If.Then>
+                      </If>
+                    </Sequence>
+                    <Sequence DisplayName="Checks For Multiple True False-Type-Sequence" sap:VirtualizedContainerService.HintSize="566,351" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[question.Value.Item(&quot;type&quot;).Equals(&quot;Multiple True False (ETH)&quot;)]" DisplayName="If type is Multiple True False" sap:VirtualizedContainerService.HintSize="524,259" sap2010:WorkflowViewState.IdRef="If_7">
+                        <If.Then>
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="23b Get Metadata Of Multiple True False-Questions (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Process\23bGetMetadataOfMultipleTrueFalseQuestions.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
                               <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">
                                 <mva:VisualBasicReference x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" ExpressionText="question" />
@@ -209,12 +227,8 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="24 Get Question Content Metadata (Invoke Workflow File)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Process\24GetQuestionContentMetadata.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">
-                            <mva:VisualBasicReference x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" ExpressionText="question" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                          </InArgument>
+                          <InOutArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:Dictionary(x:String, x:String))" x:Key="io_question">[question]</InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
